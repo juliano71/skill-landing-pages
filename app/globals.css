@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #ffffff; --color-surface: #f5f5f5; --color-accent: #e11d48;
+  --color-accent-fg: #ffffff; --color-fg: #18181b; --color-muted: #71717a;
+  --font-display: Georgia; --font-body: system-ui;
+  --radius: 0.75rem; --shadow: 0 10px 30px rgba(0,0,0,.08);
+  --ease: cubic-bezier(.22,1,.36,1); --duration: 600ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
