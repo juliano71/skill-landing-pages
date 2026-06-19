@@ -36,9 +36,10 @@ paginas-low-ticket/
 │  ├─ SKILL.md                      # orquestra o fluxo de 5 passos
 │  └─ references/
 │     ├─ copy-frameworks.md         # frameworks de copy low ticket
-│     ├─ anti-ai-checklist.md       # o que evitar + o que fazer
+│     ├─ originality-audit.md       # anti-IA com veredito (ver §13)
 │     ├─ design-recipes.md          # receitas de estilo/paleta/fonte
-│     ├─ animations.md              # catálogo de efeitos e como implementar
+│     ├─ quality-gates.md           # auditorias: a11y, mobile, texto, polish (§13)
+│     ├─ animations.md              # catálogo de efeitos + motion tokens
 │     ├─ image-providers.md         # huggsfield vs OpenAI; como gerar
 │     └─ swipe-file/
 │        ├─ README.md               # análise de cada referência
@@ -101,8 +102,9 @@ A skill executa **5 passos**, confirmando com o usuário nos pontos de decisão:
 
 3. **Direção de arte** — escolhe/sorteia uma "receita" de `design-recipes.md`
    (paleta + par tipográfico + densidade + tratamento de imagem + estilo de
-   animação) e valida contra `anti-ai-checklist.md`. Apresenta a direção (cores,
-   fontes, mood) para aprovação rápida.
+   animação) e valida contra `originality-audit.md` (teste do reflexo de categoria
+   + anti-referência → veredito). Apresenta a direção (cores, fontes, mood) para
+   aprovação rápida.
 
 4. **Imagens** — gera os assets via `image-providers.md` (provider escolhido),
    seguindo a paleta e o mood definidos. Salva em `pages-output/<produto>/assets/`.
@@ -110,6 +112,11 @@ A skill executa **5 passos**, confirmando com o usuário nos pontos de decisão:
 5. **Código** — monta os blocos React/Next variando a composição, aplica a receita
    de estilo via design tokens (CSS variables/Tailwind theme), adiciona animações
    via `components/motion/`, e entrega responsivo em `pages-output/<produto>/`.
+
+6. **Polish + portões de qualidade** — passa a página pelas auditorias de
+   `quality-gates.md`: polish (microcopy, hierarquia de botões, estados
+   vazio/loading/erro, motion tokens), acessibilidade, mobile-first e integridade
+   de texto. Corrige o que falhar antes de declarar pronto.
 
 ## 5. Biblioteca de blocos (`components/blocks/`)
 
@@ -143,16 +150,31 @@ Cada bloco recebe estilo via tokens: `--color-bg`, `--color-accent`,
 - Regra anti-repetição: a skill não usa a mesma receita duas vezes seguidas e
   registra a última usada.
 
-## 7. `anti-ai-checklist.md` (resumo do conteúdo)
+## 7. `originality-audit.md` (resumo do conteúdo)
 
-**Evitar:** gradiente roxo/azul genérico; tudo centralizado; fonte única (só Inter);
-hero stock simétrico; spam de emoji em bullets; sombras genéricas uniformes;
-espaçamentos "perfeitos" sem ritmo; ícones genéricos sem propósito.
+Auditoria anti-IA com **veredito**: `distinctive` / `acceptable but safe` /
+`generic-blocking`. Princípios traduzidos do `visual-originality-audit` do
+claude-design-premium (MIT — ver §14).
+
+**Testes:**
+- **Reflexo de categoria:** a paleta/layout/tipografia/hero poderiam ser adivinhados
+  só sabendo o nicho? Se sim → `blocking`.
+- **Anti-referência:** evitou o clichê óbvio mas caiu num segundo clichê?
+- **Ponto de vista:** em 1 frase, o que faz esta página parecer *deste produto*, e
+  não *desta categoria*.
+
+**Anti-padrões a evitar:** gradiente roxo/azul genérico; texto com gradiente
+decorativo; tudo centralizado; fonte única (só Inter); hero+stats genérico; grids
+infinitos de cards iguais; painéis "glass" genéricos; labels minúsculas em
+caixa-alta; blobs aleatórios; sombras uniformes; spam de emoji; motion decorativo
+sem função.
 
 **Fazer:** paleta restrita e quente/coesa (2–3 cores); mix serif + sans, às vezes
 display serif grande; fotografia real com tratamento consistente; mockups 3D
 (e-book/curso) e selos; layout assimétrico/editorial; ritmo de seções (alterna
-claro/escuro); micro-detalhes táteis (badges, gift boxes, dashboards).
+claro/escuro); micro-detalhes táteis (badges, gift boxes, dashboards). Regra: a
+originalidade tem que **melhorar** clareza/confiança/hierarquia — nunca esquisitice
+gratuita.
 
 ## 8. `animations.md` (resumo do conteúdo)
 
@@ -184,7 +206,7 @@ claro/escuro); micro-detalhes táteis (badges, gift boxes, dashboards).
 1. Rodar a skill com um briefing produz uma página completa, responsiva e funcional
    em `pages-output/<produto>/` que `next build` compila sem erros.
 2. Duas páginas geradas em sequência têm **visual claramente distinto** (paleta,
-   tipografia, layout) — passam no anti-ai-checklist.
+   tipografia, layout) — recebem veredito `distinctive`/`acceptable` no originality-audit.
 3. Copy cobre todas as seções do arquétipo escolhido.
 4. Imagens geradas seguem a paleta e podem usar qualquer um dos dois providers.
 5. Animações funcionam e respeitam `prefers-reduced-motion`.
@@ -197,3 +219,31 @@ claro/escuro); micro-detalhes táteis (badges, gift boxes, dashboards).
   necessária, é fornecida pelo usuário (IA pode gerar avatar/cenário genérico).
 - **Git**: o projeto ainda não é um repositório git; recomendar `git init` para
   versionar skill + páginas.
+
+## 13. Camada de qualidade — `quality-gates.md` (resumo)
+
+Auditorias rodadas no passo 6 do fluxo, com princípios traduzidos do
+claude-design-premium (MIT — §14):
+
+- **Polish**: microcopy, alinhamento óptico, hierarquia de botões (primário vs
+  secundário inequívocos), estados vazio/loading/erro úteis, ritmo vertical,
+  **motion tokens** (duração + easing consistentes), orquestração de entrada sem
+  layout shift.
+- **Acessibilidade**: contraste, foco visível, labels, navegação por teclado,
+  `prefers-reduced-motion`.
+- **Mobile-first**: layout valida primeiro no mobile; toque ≥ 44px; sem overflow.
+- **Integridade de texto**: copy sem "tells" de IA (frases genéricas, repetição,
+  placeholders), ortografia, consistência de terminologia.
+
+> Os **scripts** do claude-design-premium miram o runtime "Claude Design Web"
+> (`*.dc.html`), não Next.js — por isso adaptamos os **princípios** como checklists
+> aplicáveis ao nosso código React, sem depender dos scripts deles.
+
+## 14. Créditos / licenças de terceiros
+
+- **claude-design-premium** (github.com/oalanicolas/claude-design-premium, MIT):
+  princípios de `visual-originality-audit` e `polish-phase` adaptados para
+  `originality-audit.md` e `quality-gates.md`. Auditado como seguro em 2026-06-19
+  (0 deps npm, sem rede/exec/acesso a segredos nos scripts).
+- **framer-motion** (MIT) — animações.
+- **ui-ux-pro-max** (skill) — geração de receitas de design.
