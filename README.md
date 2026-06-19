@@ -41,7 +41,7 @@ A skill conduz você por **6 passos interativos**:
 
 1. **Briefing** — produto, público-alvo, preço, promessa principal.
 2. **Arquétipo** — venda direta ou captura de leads.
-3. **Receita de design** — escolha um dos 6 estilos visuais (ex: `vinho-premium`, `neon-tech`).
+3. **Receita de design** — escolha um dos 6 estilos visuais (ex: `vinho`, `dark-neon`).
 4. **Geração de copy** — headlines, subtítulos, CTA, prova social.
 5. **Geração de imagens** — hero e suporte via IA (OpenAI ou Huggsfield).
 6. **Entrega do código** — componente Next.js + CSS tokens + arquivo de receita.
@@ -99,7 +99,7 @@ npm start        # serve o build de produção
 
 ```
 .claude/skills/criar-pagina-venda/   ← skill orquestradora (SKILL.md + refs)
-components/                          ← blocos reutilizáveis (HeroBlock, CTABlock, etc.)
+components/                          ← blocos reutilizáveis (Hero, PricingOffer, Guarantee, FAQ)
 lib/                                 ← utilitários (design tokens, image providers, types)
 pages-output/                        ← páginas geradas pela skill
 docs/superpowers/                    ← spec e plano do projeto

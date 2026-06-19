@@ -15,30 +15,30 @@ Todas obedecem o tipo `Recipe` de `lib/design/recipe.ts`.
 
 ## As 6 receitas
 
-### 1. `burgundy-cream` — inspirada em ref-nutricionista.jpeg
+### 1. `vinho` — inspirada em ref-nutricionista.jpeg
 
 Paleta feminina e acolhedora. Vinho como cor principal, creme no fundo, magenta/rosa nos CTAs.
 Ideal para: e-books de saúde, nutrição, bem-estar feminino.
 
 ```ts
 const recipe: Recipe = {
-  id: "burgundy-cream",
+  id: "vinho",
   colors: {
     bg: "#fbf7f4",
-    surface: "#f3ece8",
-    accent: "#c0346a",
+    surface: "#f3e9e6",
+    accent: "#8a1f3d",
     accentFg: "#ffffff",
-    fg: "#1e0c15",
-    muted: "#8a1f3d",
+    fg: "#2a1418",
+    muted: "#8a7a7e",
   },
   fonts: {
     display: "Playfair Display",
     body: "Inter",
   },
-  radius: "0.75rem",
-  shadow: "0 4px 24px 0 rgba(138,31,61,0.12)",
-  ease: "cubic-bezier(0.4, 0, 0.2, 1)",
-  duration: "300ms",
+  radius: "1rem",
+  shadow: "0 12px 32px rgba(80,20,40,.12)",
+  ease: "cubic-bezier(.22,1,.36,1)",
+  duration: "600ms",
 };
 ```
 

@@ -31,7 +31,7 @@ A transição padrão é `duration: 0.6, ease: [0.22, 1, 0.36, 1]` (a mesma curv
 
 **Stagger em listas:** para listas longas (cards de bônus, depoimentos), use delays
 incrementais de 0.08–0.12 s por item. Acima de 6 itens, trave o delay máximo em ~0.5 s
-para não a sequência parecer lenta demais.
+para a sequência não parecer lenta demais.
 
 ---
 
@@ -142,7 +142,7 @@ para criar o loop perfeito.
 const items = [...logos, ...logos];
 <div className="marquee-viewport">
   <div className="marquee-track">
-    {items.map((src, i) => <img key={i} src={src} alt="" aria-hidden="true" />)}
+    {items.map((src) => <img key={src} src={src} alt="" aria-hidden="true" />)}
   </div>
 </div>
 ```

@@ -14,7 +14,7 @@ export default function DemoPage() {
         ctaLabel="Quero meu e-book"
         ctaHref="#oferta"
       />
-      <PricingOffer fromPrice="R$57,00" price="R$19,90" installments="ou 3x de R$6,63" ctaLabel="Garantir agora" ctaHref="https://checkout.exemplo" />
+      <PricingOffer fromPrice="R$57,00" price="R$19,90" installments="ou 3x de R$6,63" ctaLabel="Garantir agora" ctaHref="#oferta" />
       <Guarantee days={7} text="Se em 7 dias você achar que não é pra você, devolvemos 100% do valor. Sem perguntas." />
       <FAQ items={[
         { q: "Como recebo o material?", a: "Por e-mail, logo após a compra." },

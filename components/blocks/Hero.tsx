@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
 import type { HeroProps } from "./types";
 
-export function Hero({ headline, sub, ctaLabel, ctaHref, image }: HeroProps) {
+export function Hero({ headline, sub, ctaLabel, ctaHref, image, altText }: HeroProps) {
   return (
     <Section className="grid items-center gap-10 md:grid-cols-2">
       <Reveal>
@@ -14,7 +14,7 @@ export function Hero({ headline, sub, ctaLabel, ctaHref, image }: HeroProps) {
       {image && (
         <Reveal delay={0.1}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={image} alt="" className="w-full rounded-token shadow-token" />
+          <img src={image} alt={altText ?? ""} className="w-full rounded-token shadow-token" />
         </Reveal>
       )}
     </Section>
